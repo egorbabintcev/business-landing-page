@@ -1,4 +1,6 @@
-![](https://i.postimg.cc/2STgq68Q/WIREFRAME.jpg)
+<p align="center">
+  <img src="https://i.postimg.cc/2STgq68Q/WIREFRAME.jpg">
+</p>
 
 # Business landing page
 It's a simple website for demonstrating my skills. In future it will be complemented by new, better code.
