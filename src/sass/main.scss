@@ -1,0 +1,796 @@
+@import './utils/variables';
+@import './utils/grid';
+@import './utils/reset';
+@import './utils/typography';
+
+.nav {
+  position: relative;
+  padding: 22px 0;
+  background-color: $light;
+  & .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &-menu {
+    & ul {
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      background-color: $light;
+      @include media('<=lg') {
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        flex-direction: column;
+        transition: .35s;
+        transform-origin: 100% 0%;
+        transform: translateX(-50%) scaleY(0);
+        &.expanded {
+          transform: translateX(-50%) scaleY(1);
+          transition: .35s;
+        }
+      }
+    }
+    &__toggler {
+      display: none;
+      font-size: 3rem;
+      @include media('<=lg') {
+        display: block;
+      }
+    }
+    &__item {
+      @include media('<=lg') {
+        // width: 100%;
+        // text-align: center;
+      }
+    }
+    &__link {
+      display: block;
+      padding: 12px 20px;
+      border-radius: 2px;
+      font: {
+        family: $font--title;
+        size: 1.4rem;
+        weight: 400;
+      }
+      text-transform: uppercase;
+      transition: .25s;
+      &:hover {
+        color: $light;
+        background-color: $accent--yellow;
+      }
+    }
+  }
+}
+
+.intro {
+  background-color: $accent--blue;
+  padding: {
+    top: 110px;
+    // bottom: 350px;
+  }
+  color: $light;
+  & .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &-text {
+    margin-bottom: 30px;
+    text-align: center;
+    &__title {
+      text-transform: uppercase;
+      font: {
+        family: $font--subtitle;
+        size: 3.5rem;
+      }
+    }
+    &__subtitle {
+      font-size: 1.6rem;
+    }
+  }
+  &-form {
+    @include make-row();
+    grid-gap: 10px;
+    &__input {
+      &-wrapper {
+        position: relative;
+        grid-column: span 3;
+        @include media('<lg') {
+          grid-column: span 12;
+        }
+        &::before {
+          position: absolute;
+          top: 50%;
+          left: 12px;
+          transform: translateY(-50%);
+          line-height: 1;
+          font: {
+            family: 'Font Awesome 5 Pro';
+            size: 1.4rem;
+            weight: 700;
+          }
+          color: $accent--grey;
+        }
+        &:nth-child(1)::before {
+          content: '\f007';
+        }
+        &:nth-child(2)::before   {
+          content: '\f0e0'
+        }
+        &:nth-child(3)::before {
+          content: '\f879';
+        }
+      }
+      width: 100%;
+      padding: 15px 40px;
+      font-size: 1.3rem;
+      border-radius: 2px;
+    }
+    &__button {
+      padding: 0 45px;
+      grid-column: span 3;
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      background-color: $accent--yellow;
+      color: $light;
+      @include media('<lg') {
+        padding: 15px 45px;
+        grid-column: span 12;
+      }
+    }
+  }
+  &-slider {
+    transform: translateY(80px);
+    &__slide {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    &__controls {
+      display: flex;
+      justify-content: center;
+      &-dot {
+        width: 11px;
+        height: 11px;
+        border: 1px solid $accent--grey;
+        border-radius: 50%;
+        background-color: transparent;
+        margin-right: 5px;
+        &:last-child {
+          margin-right: 0;
+        }
+        &_active {
+          border-color: $accent--blue;
+        }
+      }
+    }
+  }
+}
+
+.services {
+  padding: {
+    top: 200px;
+    bottom: 150px;
+  }
+  & .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__title {
+    font: {
+      family: $font--subtitle;
+      size: 3rem;
+    }
+    text-transform: uppercase;
+  }
+  &__subtitle {
+    margin-bottom: 60px;
+    font-size: 1.6rem;
+  }
+  &-wrapper {
+    align-self: stretch;
+    @include make-row();
+    grid-gap: 60px 30px;
+  }
+}
+
+.service {
+  display: flex;
+  align-items: flex-start;
+  grid-column: span 6;
+  @include media('<md') {
+    grid-column: span 12;
+  }
+  cursor: pointer;
+  &:hover &__icon {
+    color: $accent--yellow;
+  }
+  &__icon {
+    transition: .25s;
+    color: $accent--blue;
+    margin-right: 25px;
+    font-size: 4.5rem;
+  }
+  &-text {
+    &__title {
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      font: {
+        family: $font--title;
+        size: 1.6rem;
+      }
+    }
+    &__subtitle {
+      color: $accent--grey;
+      font-size: 1.3rem;
+      // word-break: break-all;
+    }
+  }
+}
+
+.about {
+  padding: {
+    top: 5%;
+    bottom: 5%;
+  }
+  background: {
+    image: url('../img/about-split.jpg');
+    repeat: no-repeat;
+    size: 50% auto;
+    color: #ffc155;
+  }
+  color: $light;
+  @include media('<xl') {
+    background: #ffc155;
+  }
+  & .container {
+    display: flex;
+    justify-content: flex-end;
+    @include media('<xl') {
+      justify-content: center;
+    }
+  }
+  &-content {
+    max-width: 45%;
+    @include media('<xl') {
+      max-width: 100%;
+    }
+  }
+  &__title {
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font: {
+      family: $font--subtitle;
+      size: 3rem;
+    }
+  }
+  &__subtitle {
+    margin-bottom: 30px;
+    font-size: 1.4rem;
+    line-height: 180%;
+  }
+  &__button {
+    padding: 20px 30px;
+    border: 1px solid #e7ad48;
+    border-radius: 2px;
+    background-color: transparent;
+    color: $light;
+    text-transform: uppercase;
+    font: {
+      family: $font--title;
+      size: 1.6rem;
+    }
+  }
+}
+
+.pricing {
+  padding: {
+    top: 130px;
+    bottom: 160px;
+  }
+  background-color: #e7edf3;
+  & .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__title {
+    text-transform: uppercase;
+    font: {
+      family: $font--subtitle;
+      size: 3rem;
+    }
+  }
+  &__subtitle {
+    text-align: center;
+    margin-bottom: 75px;
+    font-size: 1.6rem;
+  }
+  &-wrapper {
+    align-self: stretch;
+    @include make-row();
+    grid-gap: 30px 0;
+  }
+}
+
+.price {
+  padding: 50px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  grid-column: span 4;
+  font-family: $font--title;
+  color: $accent--grey;
+  background-color: $light;
+  border-color: $accent--grey;
+  border-radius: 2px;
+  @include media('<lg') {
+    grid-column: 3/span 8;
+  }
+  @include media('<md') {
+    grid-column: 2/span 10;
+  }
+  @include media('<sm') {
+    grid-column: span 12;
+  }
+  &_active {
+    background-color: $accent--blue;
+    color: $light;
+    border-color: $light;
+    transform: scale(1.05);
+  }
+  &__title {
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font: {
+      size: 2.5rem;
+      weight: 300;
+    }
+  }
+  &-amount {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & span {
+      color: $accent--yellow;
+      font: {
+        size: 6rem;
+        weight: 700;
+      }
+    }
+    & small {
+      text-transform: uppercase;
+      color: inherit;
+      font-size: 1.8rem;
+    }
+  }
+  &__parameter {
+    padding: 15px 0;
+    border-top: 1px solid;
+    border-color: inherit;
+    text-transform: uppercase;
+    font: {
+      size: 1.5rem;
+      weight: 400;
+    }
+    &:last-of-type {
+      margin-bottom: 20px;
+    }
+  }
+  &__button {
+    padding: 15px 20px;
+    text-transform: uppercase;
+    color: $light;
+    background-color: $accent--yellow;
+    border-radius: 2px;
+    font: {
+      family: $font--title;
+      size: 1.5rem;
+    }
+  }
+}
+
+.how-it-works {
+  padding: 150px 0;
+  & .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__title {
+    text-transform: uppercase;
+    font: {
+      family: $font--subtitle;
+      size: 3rem;
+    }
+  }
+  &__subtitle {
+    margin-bottom: 110px;
+    font-size: 1.6rem;
+    text-align: center;
+  }
+  &-wrapper {
+    margin-bottom: 90px;
+    @include make-row();
+    grid-gap: 60px $grid-gutter;
+    @include media('<sm') {
+      grid-gap: 200px 0;
+    }
+  }
+  &__button {
+    padding: 15px 20px;
+    background-color: $accent--yellow;
+    color: $light;
+    text-transform: uppercase;
+    font: {
+      family: $font--title;
+      size: 1.5rem;
+    }
+  }
+  & .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-column: span 3;
+    // padding: 0 15px;
+    position: relative;
+    @include media('<lg') {
+      grid-column: span 6;
+    }
+    @include media('<sm') {
+      grid-column: span 12;
+    }
+    &::before {
+      content: url(../img/arrow.svg);
+      position: absolute;
+      bottom: 100%;
+      left: 100%;
+      transform: translateX(calc(-50% + 15px));
+      @include media('<sm') {
+        top: calc(100% + 30px);
+        left: 50%;
+      }
+    }
+    &:last-child::before {
+      content: none;
+    }
+    @include media('>lg') {
+      &:nth-child(even)::before {
+        transform: translate(calc(-50% + 15px), 200%) rotate(180deg);
+      }
+    }
+    @include media('<lg', '>sm') {
+      &:nth-child(even)::before {
+        content: none;
+      }
+      &:nth-child(3n)::before {
+        transform: translate(calc(-50% + 15px), 200%) rotate(180deg);
+      }
+    }
+    @include media('<sm') {
+      &:nth-child(odd)::before {
+        transform-origin: 50% 50%;
+        transform: translate(-25%, 70px) rotate(90deg);
+      }
+      &:nth-child(even)::before {
+        transform-origin: 50% 50%;
+        transform: translate(-75%, 70px) rotate(270deg);
+      }
+    }
+    &__icon {
+      color: $accent--blue;
+      margin-bottom: 80px;
+      font-size: 7rem;
+      @include media('<sm') {
+        margin-bottom: 40px;
+      }
+    }
+    &__title {
+      margin-bottom: 25px;
+      text-transform: uppercase;
+      font: {
+        family: $font--title;
+        size: 2.2rem;
+        weight: 700;
+      }
+    }
+    &__subtitle {
+      color: $accent--grey;
+      text-align: center;
+      font: {
+        size: 1.6rem;
+      }
+    }
+  }
+}
+
+.clients {
+  padding: 150px 0;
+  background-color: $accent--yellow;
+  color: $light;
+  & .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__title {
+    text-transform: uppercase;
+    font: {
+      family: $font--subtitle;
+      size: 3rem;
+    }
+  }
+  &__subtitle {
+    margin-bottom: 50px;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  &-wrapper {
+    @include make-row();
+    @include media('<lg') {
+      grid-gap: $grid-gutter 0;
+    }
+  }
+  & .client {
+    padding: 45px 30px 50px;
+    grid-column: span 6;
+    display: flex;
+    background-color: $light;
+    border-radius: 2px;
+    @include media('<lg') {
+      grid-column: span 12;
+    }
+    @include media('<md') {
+      flex-direction: column;
+    }
+    &__avatar {
+      width: 120px;
+      height: 120px;
+      margin-right: 30px;
+      border-radius: 50%;
+      @include media('<md') {
+        margin: {
+          right: 0;
+          bottom: 30px;
+        }
+      }
+    }
+    &__review {
+      position: relative;
+      color: $accent--grey;
+      margin-bottom: 20px;
+      font: {
+        size: 1.4rem;
+      }
+      &::before, &::after {
+        position: absolute;
+        font: {
+          family: 'Font Awesome 5 Pro';
+          weight: 700;
+        }
+      }
+      &::before {
+        content: '\f10d';
+        left: -20px;
+        top: 0;
+      }
+      &::after {
+        content: '\f10e';
+        right: 0;
+        bottom: 0;
+      }
+    }
+    &__info {
+      color: #f6772c;
+      text-transform: uppercase;
+      font: {
+        family: $font--title;
+        size: 1.4rem;
+      }
+      &-role {
+        color: #99a9ae;
+      }
+    }
+  }
+}
+
+.subscribe {
+  padding: {
+    top: 150px;
+    bottom: 50px;
+  }
+  & .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__title {
+    text-transform: uppercase;
+    font: {
+      family: $font--subtitle;
+      size: 3rem;
+    }
+  }
+  &__subtitle {
+    margin-bottom: 40px;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  &-form {
+    @include make-row();
+    grid-gap: 10px;
+    margin-bottom: 50px;
+    &__input {
+      width: 100%;
+      padding: 15px 40px;
+      font-size: 1.3rem;
+      border: 1px solid $accent--grey;
+      border-radius: 2px;
+      &-wrapper {
+        position: relative;
+        &::before {
+          position: absolute;
+          top: 50%;
+          left: 12px;
+          transform: translateY(-50%);
+          line-height: 1;
+          font: {
+            family: 'Font Awesome 5 Pro';
+            size: 1.4rem;
+            weight: 700;
+          }
+          color: $accent--grey;
+        }
+        &:nth-child(1)::before {
+          content: '\f007';
+        }
+        &:nth-child(2)::before {
+          content: '\f0e0';
+        }
+
+        @include media('>lg') {
+          &_small {
+            grid-column: 2/span 3;
+          }
+          &_large {
+            grid-column: span 4;
+          }
+        }
+        @include media('<lg') {
+          grid-column: span 12;
+        }
+      }
+    }
+    &__button {
+      padding: 0 45px;
+      grid-column: span 3;
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      background-color: $accent--yellow;
+      color: $light;
+      @include media('<lg') {
+        padding: 15px 45px;
+        grid-column: span 12;
+      }
+    }
+  }
+  &-location {
+    margin-bottom: 50px;
+    align-self: stretch;
+    position: relative;
+    &__bg {
+      width: 100%;
+      height: auto;
+      @include media('<md') {
+        display: none;
+      }
+    }
+    &__address {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      @include media('<md') {
+        position: static;
+        transform: none;
+      }
+    }
+    &__bulb {
+      width: 280px;
+      height: 280px;
+      margin-bottom: 25px;
+      position: relative;
+
+      background-color: $dark;
+      border-radius: 50%;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: calc(100% - 1px);
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 15px 7.5px 0px 7.5px;
+        border-color: $dark transparent transparent transparent;
+      }
+      &-title {
+        margin-bottom: 15px;
+        color: $light;
+        text-transform: uppercase;
+        font: {
+          family: $font--title;
+          size: 1.8rem;
+          weight: 700;
+        }
+      }
+      &-subtitle {
+        margin-bottom: 10px;
+        color: $light ;
+        font-size: 1.6rem;
+      }
+      &-email {
+        color: $accent--yellow;
+        font-size: 1.6rem;
+      }
+    }
+  }
+  &-contacts {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+    border-top: 1px solid #e3e7ec;
+    &__phone {
+      margin-bottom: 15px;
+      font: {
+        family: $font--title;
+        size: 2.2rem;
+      }
+      & i {
+        margin-right: 5px;
+      }
+    }
+    &__social {
+      display: flex;
+      align-items: center;
+      &-icon {
+        font-size: 2rem;
+        color: $accent--blue;
+        margin-right: 15px;
+        transition: .25s;
+        &:hover {
+          color: $accent--yellow;
+        }
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
+
+.footer {
+  padding: 15px 0;
+  display: flex;
+  justify-content: center;
+  background-color: $accent--blue;
+  &__text {
+    text-align: center;
+    color: $light;
+    font-size: 1.2rem;
+  }
+}
