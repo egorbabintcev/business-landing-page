@@ -25,5 +25,5 @@ yarn build
 
 ## Built with
 * [Sass](https://github.com/sass/sass) - css prepocessor
-* [Yarn]() - dependencies manager
-* [Gulp]() - task runner
+* [Yarn](https://github.com/yarnpkg/yarn) - dependencies manager
+* [Gulp](https://github.com/gulpjs/gulp) - task runner
