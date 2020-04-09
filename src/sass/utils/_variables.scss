@@ -15,4 +15,6 @@ $grid-gutter: 30px;
 $grid-columns: 12;
 $breakpoints: ( 'xs': 576px, 'sm': 576px, 'md': 768px, 'lg': 992px, 'xl': 1200px );
 
-$fa-font-path: '../fonts';
+// Fonts
+$font-path: '../fonts';
+$fa-font-path: $font-path;
