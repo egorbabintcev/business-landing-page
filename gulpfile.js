@@ -13,7 +13,6 @@ const paths = {
   }
 }
 
-// TODO: remove unused modules
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const cssnano = require('gulp-cssnano');
@@ -22,7 +21,6 @@ const gulpIf = require('gulp-if');
 const sourcemaps = require('gulp-sourcemaps');
 const imagemin = require('gulp-imagemin');
 const browserSync = require('browser-sync').create();
-const zip = require('gulp-zip');
 
 const isProd = process.env.NODE_ENV === 'production';
 
